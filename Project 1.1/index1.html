@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Roll the Dice</title>
+        <style>
+            :root{
+                 --clr-neon: hsl(317, 100%, 50%);
+                 --clr-bg: hsl(323, 21%, 16%);
+            }
+
+            body{
+                background: linear-gradient(to right, #3f5efb, #fc466b);
+                color: var(--clr-neon);
+            }
+
+            .wrapper {
+                width: 70%;
+                margin: auto;
+                text-align: center;
+            }
+
+            h1 {
+                text-align: center;
+                margin: 20px;
+                font-size: 5rem;
+                color: rgb(208, 214, 218)
+            }
+            .dice-area{
+                margin: 20px 210px;
+                text-align: center;
+                display: inline-block;
+            }
+
+            p{
+                font-size: 2.5rem;
+                color: #a59ba0;
+            }
+
+            img {
+                width: 200px;
+            }
+
+            .neon-button {
+                font-size: 1.5rem;
+                position: absolute;
+                top: 90%;
+                left: 45%;
+                display: inline-block;
+                cursor: pointer;
+                text-decoration: none;
+                color: var(--clr-neon);
+                border: var(--clr-neon) 0.125em solid;
+                padding: 0.25em 1em;
+                border-radius: 0.25em;
+                background: none;
+                text-shadow: 0 0 0.125em;
+            }
+
+            .refresh {
+                position: absolute;
+                top: 90%;
+                left: 45%;
+                background-color: #3f5efb;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1></h1>
+        </div>
+        <div class="dice-area">
+            <p>User 1</p>
+            <img> 
+        </div>
+        <div class="dice-area">
+            <p>User 2</p>
+            <img>
+        </div>
+        <a href="#" class="neon-button refresh" onclick="location.reload()">
+            Roll the Dice
+        </a>
+        <script>
+            var list = document.querySelectorAll('img');
+
+            const first = Math.floor(Math.random() * 6 + 1);
+            const imageFirst = 'assets/dice'+first+'.png';
+            list[0].setAttribute('src', imageFirst);
+
+            const second = Math.floor(Math.random() * 6 + 1);
+            const imageSecond = 'assets/dice'+second+'.png';
+            list[1].setAttribute('src', imageSecond);
+
+            if (first > second) {
+                document.querySelector('h1').innerHTML = 'User 1 wins!';
+            }
+
+            else if (first < second) {
+                document.querySelector('h1').innerHTML = 'User 2 wins!';
+            }
+
+            else {
+                document.querySelector('h1').innerHTML = 'It\'s a tie!';
+            }
+
+        </script>
+    </body>
+</html>
